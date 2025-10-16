@@ -1,42 +1,34 @@
-/* ******************************************
- * This server.js file is the primary file of the 
- * application. It is used to control the project.
- *******************************************/
-/* ***********************
- * Require Statements
- *************************/
-const express = require("express")
-const expressLayouts = require("express-ejs-layouts")
-const env = require("dotenv").config()
-const app = express()
-const static = require("./routes/static")
+// server.js
+const express = require("express");
+const path = require("path");
 
-/* ***********************
- * View Engine and Templates
- *************************/
-app.set("view engine", "ejs")
-app.use(expressLayouts)
-app.set("layout", "./layouts/layout") // not at views root
+const app = express();
+const port = process.env.PORT || 3000;
 
-/* ***********************
- * Routes
- *************************/
-app.use(static)
+// Set up the view engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-/* ***********************
- * Local Server Information
- * Values from .env (environment) file
- *************************/
-const port = process.env.PORT
-const host = process.env.HOST
+// Serve static files (CSS, JS, images)
+app.use(express.static(path.join(__dirname, "public")));
 
-/* ***********************
- * Log statement to confirm server operation
- *************************/
+// Middleware to pass a default title for pages
+app.use((req, res, next) => {
+  res.locals.title = "Home";
+  next();
+});
+
+// Home route
+app.get("/", (req, res) => {
+  res.render("index", { title: "Home" });
+});
+
+// 404 route (if no other route matches)
+app.use((req, res) => {
+  res.status(404).render("index", { title: "404 - Page Not Found" });
+});
+
+// Start the server
 app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`)
-})
-
-app.get("/", function(req, res){
-  res.render("index", {title: "Home"})
-})
+  console.log(`CSE Motors app listening on http://localhost:${port}`);
+});

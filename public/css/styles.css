@@ -1,6 +1,294 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
+/* Base Styles */
+:root {
+  --primary-color: white;
+  --accent-color: black;
+  --light-bg: #f8f8f8;
+  --dark-text: #222;
+}
+
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  line-height: 1.6;
+  background-image: url('/images/site/checkerboard.jpg');
+}
+
+#wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+/* Header */
+#top-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#top-header a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.siteName a {
+  font-size: 1.5rem;
+}
+
+/* Navigation */
+nav {
+  background-color: var(--accent-color);
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0.5rem;
+}
+
+nav li {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+nav li:hover {
+  text-decoration: underline;
+}
+
+/* Main */
+main {
+  padding: 1rem;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.hero-text {
+  margin-top: 3rem;
+  text-align: left;
+}
+
+/* Upgrades */
+.upgrades {
+  margin-top: 2rem;
+}
+
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 220px);
+    /* 2 fixed-width columns */
+  /* 2 equal-width columns */
+  grid-template-rows: repeat(2, auto);
+  /* 2 rows (auto height) */
+  gap: 10px;
+  /* space between items */
+  justify-content: left;
+  /* centers grid if narrower than container */
+  align-items: center;
+}
+
+.upgrade-card {
+  text-align: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 200px;
+  margin: 0 auto;
+  /* center cards in grid */
+  display: flex;
+  flex-direction: column;
+  /* stack children vertically */
+  align-items: center;
+  /* center horizontally */
+}
+
+.upgrade-card img {
+  width: 160px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 2.5rem;
+  /* space between image and link */
+}
+
+.upgrade-card a {
+  display: block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.upgrade-card a:hover {
+  text-decoration: underline;
+}
+
+/* Reviews */
+.reviews {
+  margin-top: 1rem;
+}
+
+.reviews ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+}
+
+.reviews li {
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-color);
+  color: black;
+  text-align: left;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+/* Desktop Layout */
+@media (min-width: 768px) {
+  main {
+    display: flex;
+    flex-direction: row-reverse; /* flips order: upgrades left, hero right */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .hero {
+      position: relative;
+      text-align: center;
+    }
+    
+    h1 {
+      margin-top: 50px;
+      margin-left: 20px;
+    }
+
+  .hero-text {
+    text-align: left;
+    flex: 1;
+    margin-top: -3.7rem;
+    width: 100%;
+    padding-left: 150px;
+    margin-right: 200px;
+  }
+
+    .hero img {
+      width: 150%;
+      height: auto;
+      border-radius: 8px;
+      margin-left: -500px;
+      margin-top: 10px;
+      margin-bottom: 100px;
+    }
+
+        #wrapper {
+          max-width: 1200px;
+          /* keeps content centered */
+          margin: 20px auto;
+          /* adds space around the page */
+          border: 5px solid rgb(10, 216, 216);
+          /* the border itself */
+          border-radius: 10px;
+          /* optional rounded corners */
+          overflow: hidden;
+          /* ensures content doesn’t overflow corners */
+          background-color: white;
+          /* optional: ensures content stands out */
+        }
+
+.upgrades {
+  margin-top: 34.6rem;
+}
+
+.upgrade-grid {
+  justify-content: flex-end;
+  /* moves cards to the right side */
+  margin-right: -100px;
+  /* remove negative offset */
+  gap: 20px 70px;
+  margin-top: 60px;
+}
+
+.upgrade-item {
+  display: flex;
+  flex-direction: column;
+  /* stack card and link vertically */
+  align-items: center;
+}
+
+.upgrade-card {
+  background-color: rgb(27, 164, 228);
+  border-radius: 8px;
+  border: solid 4px black;
+  width: 270px;
+  /* fixed width */
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upgrade-card img {
+  width: 160px;
+  height: 100px;
+  object-fit: contain;
+  margin-top: 20px;
+}
+
+.upgrade-item a {
+  margin-top: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.upgrade-item a:hover {
+  text-decoration: underline;
+}
+
+.reviews {
+  width: 500px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 45px;
+  font-size: 20px;
+  margin-left: 160px;
+}
+
+.reviews li {
+  margin-bottom: 2rem;
+  /* adds vertical space between bullets */
+  line-height: 2.3;
+  /* optional: improves readability */
+  font-size: 23px;
+  margin-left: -24px;
+}
 }

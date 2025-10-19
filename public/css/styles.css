@@ -98,7 +98,7 @@ main {
 
 .upgrade-grid {
   display: grid;
-  grid-template-columns: repeat(2, 220px);
+  grid-template-columns: repeat(2, 170px);
     /* 2 fixed-width columns */
   /* 2 equal-width columns */
   grid-template-rows: repeat(2, auto);
@@ -114,13 +114,12 @@ main {
   background-color: rgb(27, 164, 228);
   border-radius: 8px;
   border: solid 4px black;
-  width: 200px;
+  width: 150px;
   /* fixed width */
   height: 170px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -100px;
 }
 
 .upgrade-card img {
@@ -285,6 +284,7 @@ footer {
 }
 
 .upgrade-grid {
+  grid-template-columns: repeat(2, 220px);
   justify-content: flex-end;
   /* moves cards to the right side */
   margin-right: -100px;
@@ -310,7 +310,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
+  margin-left: 40px;
 }
 
 .upgrade-card img {

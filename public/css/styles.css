@@ -111,34 +111,31 @@ main {
 }
 
 .upgrade-card {
-  text-align: center;
-  background-color: #f0f0f0;
+  background-color: rgb(27, 164, 228);
   border-radius: 8px;
-  padding: 1rem;
-  width: 200px;
-  margin: 0 auto;
-  /* center cards in grid */
+  border: solid 4px black;
+  width: 150px;
+  /* fixed width */
+  height: 170px;
   display: flex;
-  flex-direction: column;
-  /* stack children vertically */
+  justify-content: center;
   align-items: center;
-  /* center horizontally */
 }
 
 .upgrade-card img {
   width: 160px;
   height: 100px;
   object-fit: contain;
-  margin-bottom: 2.5rem;
-  /* space between image and link */
+  margin-top: 20px;
 }
 
-.upgrade-card a {
-  display: block;
-  margin-top: 0.5rem;
+.upgrade-item a {
+  margin-top: 5px;
+  text-align: center;
   text-decoration: none;
-  color: black;
   font-weight: bold;
+  color: black;
+  margin-left: 25px;
 }
 
 .upgrade-card a:hover {
@@ -312,6 +309,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 50px;
 }
 
 .upgrade-card img {
@@ -327,6 +325,7 @@ footer {
   text-decoration: none;
   font-weight: bold;
   color: black;
+  margin-left: 40px;
 }
 
 .upgrade-item a:hover {

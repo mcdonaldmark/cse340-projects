@@ -91,6 +91,12 @@ main {
   text-align: left;
 }
 
+.hero ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* Upgrades */
 .upgrades {
   margin-top: 2rem;
@@ -98,7 +104,7 @@ main {
 
 .upgrade-grid {
   display: grid;
-  grid-template-columns: repeat(2, 170px);
+  grid-template-columns: repeat(2, 160px);
     /* 2 fixed-width columns */
   /* 2 equal-width columns */
   grid-template-rows: repeat(2, auto);

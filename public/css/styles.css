@@ -207,7 +207,7 @@ main {
 
 .upgrade-item a {
   text-align: center;
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: bold;
   color: black;
   margin: 5px 0 0 0;
@@ -217,6 +217,11 @@ main {
 
 .upgrade-card a:hover {
   text-decoration: underline;
+}
+
+.upgrade-item a:hover {
+  text-decoration: underline;
+  color: blue;
 }
 
 /* Reviews */
@@ -401,7 +406,7 @@ footer {
 .upgrade-item a {
   margin-top: 5px;
   text-align: center;
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: bold;
   color: black;
   margin-left: 40px;
@@ -409,6 +414,7 @@ footer {
 
 .upgrade-item a:hover {
   text-decoration: underline;
+  color: blue;
 }
 
 .reviews {

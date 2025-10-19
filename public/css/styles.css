@@ -49,7 +49,7 @@ h1 {
 }
 
 .siteName a {
-  font-size: 2.6rem;
+  font-size: 2.0rem;
 }
 
 /* Navigation */
@@ -258,6 +258,10 @@ footer {
     align-items: flex-start;
     gap: 2rem;
   }
+
+    .siteName a {
+      font-size: 2.6rem;
+    }
 
   .hero {
       position: relative;

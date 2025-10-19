@@ -80,22 +80,81 @@ main {
   text-align: center;
 }
 
-.hero img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.hero-text {
-  margin-top: 3rem;
-  text-align: left;
-}
-
-.hero ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
+    .hero-text {
+      text-align: left;
+      flex: 1;
+      margin-top: -3.7rem;
+      width: 100%;
+      padding-left: -150px;
+      margin-right: 200px;
+    }
+  
+    .hero img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-left: 10 0px;
+      margin-top: 10px;
+      margin-bottom: 100px;
+    }
+  
+    .hero-container {
+      position: relative;
+      display: inline-block;
+    }
+  
+    .hero-box {
+      position: absolute;
+      top: 25%;
+      left: -18%;
+      background-color: rgba(255, 255, 255, 0.25);
+      /* light transparent blue */
+      padding: 0.2rem 0.5rem;
+      padding-bottom: 1.5rem;
+      padding-top: 1.5rem;
+      padding-right: 1rem;
+      padding-left: 6rem;
+      border-radius: 8px;
+      text-align: left;
+      max-width: 550px;
+      margin-left: -20px;
+      margin-top: -120px;
+    }
+  
+    /* Text inside the box */
+    .hero-title {
+      color: #0eaffa;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  
+    .hero-box ul {
+      list-style: none;
+      margin: 0.5rem 0 1rem;
+      padding: 0;
+      line-height: 1.4;
+      font-size: 0.9rem;
+      color: #0eaffa;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  
+    /* Button */
+    .hero-btn {
+      background-color: #0eaffa;
+      color: black;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+  
+    .hero-btn:hover {
+      background-color: #008ecc;
+    }
 
 /* Upgrades */
 .upgrades {

@@ -1,6 +1,7 @@
 // server.js
 const express = require("express");
 const path = require("path");
+const baseController = require("./controllers/baseController")
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -18,10 +19,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Home route
-app.get("/", (req, res) => {
-  res.render("index", { title: "Home" });
-});
+// Index route
+app.get("/", baseController.buildHome);
 
 // 404 route (if no other route matches)
 app.use((req, res) => {

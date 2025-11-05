@@ -2,6 +2,7 @@
 const express = require("express");
 const path = require("path");
 const baseController = require("./controllers/baseController")
+const inventoryRoute = require("./routes/inventoryRoute");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,6 +22,9 @@ app.use((req, res, next) => {
 
 // Index route
 app.get("/", baseController.buildHome);
+
+// Inventory routes
+app.use("/inv", inventoryRoute)
 
 // 404 route (if no other route matches)
 app.use((req, res) => {

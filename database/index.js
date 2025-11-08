@@ -32,7 +32,7 @@ module.exports = {
 } else {
   pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false } // needed for Render's SSL
+    ssl: { rejectUnauthorized: true } // needed for Render's SSL
   })
   module.exports = pool
 }

@@ -27,12 +27,12 @@ app.get("/", baseController.buildHome);
 // Inventory routes
 app.use("/inv", inventoryRoute);
 
-// 404 route (if no other route matches)
+// 404 route
 app.use((req, res) => {
   res.status(404).render("index", { title: "404 - Page Not Found" });
 });
 
-// File Not Found Route - must be last route in list
+// File Not Found Route
 app.use(async (req, res, next) => {
   next({ status: 404, message: 'Sorry, we appear to have lost that page.' })
 });

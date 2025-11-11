@@ -1,19 +1,30 @@
-// server.js
+/* ******************************************
+ * This server.js file is the primary file of the
+ * application. It is used to control the project.
+ *******************************************/
+/* ***********************
+ * Require Statements
+ *************************/
 const express = require("express");
-const path = require("path");
-const baseController = require("./controllers/baseController")
+const expressLayouts = require("express-ejs-layouts");
+const env = require("dotenv").config();
+const app = express();
+const static = require("./routes/static");
+const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const utilities = require("./utilities/");
 
-const app = express();
-const port = process.env.PORT || 3000;
-
-// Set up the view engine
+/* ***********************
+ * View Engine and Templates
+ *************************/
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.use(expressLayouts);
+app.set("layout", "./layouts/layout"); // not at views root
 
-// Serve static files (CSS, JS, images)
-app.use(express.static(path.join(__dirname, "public")));
+/* ***********************
+ * Routes
+ *************************/
+app.use(static);
 
 // Middleware to pass a default title for pages
 app.use((req, res, next) => {
@@ -26,11 +37,6 @@ app.get("/", baseController.buildHome);
 
 // Inventory routes
 app.use("/inv", inventoryRoute);
-
-// 404 route
-app.use((req, res) => {
-  res.status(404).render("index", { title: "404 - Page Not Found" });
-});
 
 // File Not Found Route
 app.use(async (req, res, next) => {
@@ -51,7 +57,16 @@ app.use(async (err, req, res, next) => {
   })
 });
 
-// Start the server
+/* ***********************
+ * Local Server Information
+ * Values from .env (environment) file
+ *************************/
+const port = process.env.PORT;
+const host = process.env.HOST;
+
+/* ***********************
+ * Log statement to confirm server operation
+ *************************/
 app.listen(port, () => {
-  console.log(`CSE Motors app listening on http://localhost:${port}`);
+  console.log(`app listening on ${host}:${port}`);
 });

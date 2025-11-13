@@ -477,4 +477,14 @@ footer {
 .inv-title {
   margin-right: 940px;
 }
+
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 columns */
+  gap: 20px;
+  /* space between cards */
+  padding: 0;
+  list-style: none;
+}
 }

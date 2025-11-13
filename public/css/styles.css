@@ -231,6 +231,10 @@ footer {
   font-size: 1.2rem;
 }
 
+  #inv-display {
+    grid-template-columns: 1fr;
+  }
+
 /* Desktop Layout */
 @media (min-width: 768px) {
   main {

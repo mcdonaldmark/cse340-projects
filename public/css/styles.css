@@ -414,7 +414,17 @@ footer {
   margin-left: 2rem;
 }
 
-.error {
-  color: red;
+.errorTitle {
+  color: black;
+  margin-right: 1000px;
+  margin-top: -145px;
+  font-size: 46px;
+}
+
+.errorMessage {
+  color: black;
+  margin-right: 620px;
+  margin-top: -60px;
+  font-size: 26px;
 }
 }

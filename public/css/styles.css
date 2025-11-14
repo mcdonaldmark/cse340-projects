@@ -196,7 +196,7 @@ main {
   font-weight: bold;
   color: black;
   margin: 5px 0 0 0;
-    display: inline-block;
+  display: inline-block;
 }
 
 .upgrade-card a:hover {
@@ -275,6 +275,55 @@ footer {
 .namePrice span {
   font-weight: bold;
   color: #333;
+}
+
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  /* stack image and info */
+  align-items: center;
+  /* center horizontally */
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.vehicle-image {
+  width: 90%;
+  /* image takes 90% of screen width */
+  max-width: 400px;
+  /* optional max width */
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.vehicle-info {
+  width: 90%;
+  /* text/info matches image width */
+  text-align: left;
+  /* align text to left for readability */
+}
+
+.vehicle-info h2 {
+  font-size: 1.4rem;
+  margin: 10px 0;
+}
+
+.vehicle-info p.vehicle-desc,
+.vehicle-info ul.vehicle-meta {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.inv-raw {
+  width: 90%;
+  margin: 20px auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
 }
 
 /* Desktop Layout */

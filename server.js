@@ -32,6 +32,11 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 // Inventory routes
 app.use("/inv", inventoryRoute);
 
+// intentional 500 route for testing error handler (used by footer link)
+app.get("/errors/trigger", (req, res, next) => {
+  next(new Error("Intentional 500 - testing error handler"))
+})
+
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
 next({ status: 404, message: "Sorry, we appear to have lost that page." });

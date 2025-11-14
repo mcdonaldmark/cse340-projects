@@ -1,0 +1,27 @@
+<% if (title) { %>
+    <h1 class="inv-title">
+        <%= title %>
+    </h1>
+    <% } %>
+
+        <%- detail %>
+
+            <div class="inv-raw">
+                <h3>Vehicle data</h3>
+                <ul>
+                    <li><strong>Stock ID:</strong>
+                        <%= vehicle.inv_id %>
+                    </li>
+                    <li><strong>Make:</strong>
+                        <%= vehicle.inv_make %>
+                    </li>
+                    <li><strong>Model:</strong>
+                        <%= vehicle.inv_model %>
+                    </li>
+                    <li><strong>Year:</strong>
+                        <%= vehicle.inv_year %>
+                    </li>
+                    <li><strong>Price:</strong> $<%= vehicle.inv_price ? vehicle.inv_price.toLocaleString() : 'N/A' %>
+                    </li>
+                </ul>
+            </div>

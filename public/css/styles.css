@@ -475,7 +475,7 @@ footer {
 }
 
 .inv-title {
-  margin-right: 940px;
+  margin-right: 840px;
 }
 
 #inv-display {
@@ -486,5 +486,60 @@ footer {
   /* space between cards */
   padding: 0;
   list-style: none;
+}
+
+.vehicle-detail {
+  display: flex;
+  flex-wrap: wrap;
+  /* wrap on small screens */
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.vehicle-image {
+  flex: 1 1 300px;
+  /* min width 300px, flexible */
+  max-width: 500px;
+  /* optional */
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.vehicle-info {
+  flex: 2 1 300px;
+  /* twice as wide as image */
+}
+
+.vehicle-info h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+.vehicle-info p.vehicle-desc {
+  margin: 1rem 0;
+  line-height: 1.4;
+}
+
+.vehicle-info ul.vehicle-meta {
+  list-style: none;
+  padding: 0;
+}
+
+.vehicle-info ul.vehicle-meta li {
+  margin: 0.4rem 0;
+}
+
+/* Optional: style raw data block */
+.inv-raw {
+  margin-top: 2rem;
+  padding: 1rem;
+  padding-left: 200px;
+  margin-left: 100px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
 }
 }

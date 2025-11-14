@@ -58,6 +58,45 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build HTML for a vehicle detail view
+* Expects a single vehicle object row
+* Returns an HTML string (detail)
+* *************************************/
+Util.buildVehicleDetail = async function(vehicle){
+  if(!vehicle) return '<p class="notice">Vehicle details not available.</p>'
+
+  // safe property reads with fallback
+  const make = vehicle.inv_make || ''
+  const model = vehicle.inv_model || ''
+  const year = vehicle.inv_year || ''
+  const description = vehicle.inv_description || ''
+  const color = vehicle.inv_color || ''
+  const miles = vehicle.inv_miles != null ? new Intl.NumberFormat('en-US').format(vehicle.inv_miles) : 'N/A'
+  const price = vehicle.inv_price != null ? new Intl.NumberFormat('en-US').format(vehicle.inv_price) : 'N/A'
+  const image = vehicle.inv_image || vehicle.inv_thumbnail || '/images/no-image.png'
+  const classification = vehicle.classification_name || ''
+
+  let detail = ''
+  detail += `<div class="vehicle-detail">`
+  detail += `  <div class="vehicle-image">`
+  detail += `    <img src="${image}" alt="Image of ${make} ${model}" />`
+  detail += `  </div>`
+  detail += `  <div class="vehicle-info">`
+  detail += `    <h2>${make} ${model} ${year ? `<span class="year">(${year})</span>` : ''}</h2>`
+  detail += `    <p class="vehicle-desc">${description}</p>`
+  detail += `    <ul class="vehicle-meta">`
+  detail += `      <li><strong>Price:</strong> $${price}</li>`
+  detail += `      <li><strong>Mileage:</strong> ${miles} miles</li>`
+  detail += `      <li><strong>Color:</strong> ${color}</li>`
+  detail += `      <li><strong>Classification:</strong> ${classification}</li>`
+  detail += `    </ul>`
+  detail += `  </div>`
+  detail += `</div>`
+
+  return detail
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

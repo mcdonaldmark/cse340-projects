@@ -15,8 +15,6 @@ if (process.env.NODE_ENV == "development") {
     },
 })
 
-// Added for troubleshooting queries
-// during development
 module.exports = {
   async query(text, params) {
     try {
@@ -32,7 +30,7 @@ module.exports = {
 } else {
   pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false } // needed for Render's SSL
+    ssl: { rejectUnauthorized: false }
   })
   module.exports = pool
 }

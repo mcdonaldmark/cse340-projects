@@ -66,7 +66,6 @@ Util.buildClassificationGrid = async function(data){
 Util.buildVehicleDetail = async function(vehicle){
   if(!vehicle) return '<p class="notice">Vehicle details not available.</p>'
 
-  // safe property reads with fallback
   const make = vehicle.inv_make || ''
   const model = vehicle.inv_model || ''
   const year = vehicle.inv_year || ''

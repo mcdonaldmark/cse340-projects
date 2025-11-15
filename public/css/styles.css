@@ -320,6 +320,13 @@ footer {
   background-color: #f9f9f9;
 }
 
+/* Notice / info message */
+.alert-notice {
+  color: red;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
 /* Desktop Layout */
 @media (min-width: 768px) {
   main {
@@ -582,5 +589,14 @@ footer {
   border: 1px solid #ddd;
   background-color: #f9f9f9;
   width: 100%;
+}
+
+/* Notice / info message */
+.alert-notice {
+  color: red;
+  font-weight: bold;
+  margin-left: -1300px;
+  margin-top: -10px;
+  margin-right: 919px;
 }
 }

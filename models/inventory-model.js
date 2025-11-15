@@ -36,14 +36,10 @@ async function getVehicleById(inv_id) {
                    ON i.classification_id = c.classification_id
                  WHERE i.inv_id = $1`
     const result = await pool.query(sql, [inv_id])
-    return result.rows[0] // undefined if not found
+    return result.rows[0]
   } catch (error) {
     console.error("getVehicleById error: " + error)
   }
 }
 
-module.exports = {
-  getClassifications,
-  getInventoryByClassificationId,
-  getVehicleById
-}
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById}

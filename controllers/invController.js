@@ -25,14 +25,6 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildByInvId = async function (req, res, next) {
   const inv_id = req.params.inv_id
   const data = await invModel.getVehicleById(inv_id)
-  if (!data) {
-    return res.status(404).render("errors/error", {
-      title: "Not found",
-      message: "Sorry, that vehicle could not be found.",
-      nav: await utilities.getNav(),
-    })
-  }
-
   const detail = await utilities.buildVehicleDetail(data)
   let nav = await utilities.getNav()
 

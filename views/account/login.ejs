@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/account.css">
+</head>
+
+<body>
+        <main class="login-wrapper">
+
+            <h1>
+                <%= title %>
+            </h1>
+
+            <% if (locals.notice) { %>
+                <div class="flash-message">
+                    <%= notice %>
+                </div>
+                <% } %>
+
+                    <form action="/account/login" method="POST" class="login-form">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+
+                        <button type="submit" class="login-btn">Login</button>
+                    </form>
+
+                    <p class="register-link">
+                        No account yet?
+                        <a href="/account/register">Register here</a>
+                    </p>
+
+        </main>
+</body>
+
+</html>

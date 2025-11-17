@@ -1,7 +1,7 @@
 // script.js
 console.log("CSE Motors site loaded successfully!");
 
-const passwordInput = document.getElementById('password');
+const passwordInput = document.getElementById('accountPassword');
 const toggleButton = document.getElementById('togglePassword');
 
 toggleButton.addEventListener('click', () => {

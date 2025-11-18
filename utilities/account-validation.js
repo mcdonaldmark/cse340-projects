@@ -72,4 +72,12 @@ validate.checkRegData = async (req, res, next) => {
   next()
 }
 
+/* **********************************
+  *  Login Validation Rules
+  * ********************************* */
+
+
+
+
+
 module.exports = validate

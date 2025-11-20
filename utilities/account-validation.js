@@ -72,25 +72,4 @@ validate.checkRegData = async (req, res, next) => {
   next()
 }
 
-/* *******************************
- * Login Validation Rules
- ******************************** */
-validate.loginRules = () => {
-  return [
-    body("account_email")
-      .trim()
-      .isEmail()
-      .withMessage("A valid email is required."),
-
-    body("account_password")
-      .trim()
-      .notEmpty()
-      .withMessage("Password is required.")
-  ]
-}
-
-
-
-
-
 module.exports = validate

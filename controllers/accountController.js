@@ -1,6 +1,7 @@
 const utilities = require("../utilities/")
 const accountModel = require("../models/account-model");
 const bcrypt = require("bcryptjs");
+const pool = require("../database/")
 
 /* ****************************************
  *  Deliver login view
@@ -10,7 +11,8 @@ async function buildLogin(req, res, next) {
   res.render("account/login", {
     title: "Login",
     nav,
-    errors: null
+    errors: null,
+    account_email: ""
   })
 }
 
@@ -32,6 +34,7 @@ async function registerAccount(req, res) {
       title: "Registration",
       nav,
       errors: null,
+      account_email: ""
     })
   }
 
@@ -50,13 +53,15 @@ async function registerAccount(req, res) {
     res.status(201).render("account/login", {
       title: "Login",
       nav,
-      errors: null,  
+      errors: null,
+      account_email:"" 
     })
   } else {
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
+      account_email:""
     })
   }
 }
@@ -74,4 +79,47 @@ async function buildRegister(req, res, next) {
   })
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount }
+/* ****************************************
+ *  Process Login
+ * *************************************** */
+async function loginAccount(req, res) {
+  let nav = await utilities.getNav()
+  const { account_email, account_password } = req.body
+
+  // Get account by email
+  const accountData = await accountModel.checkExistingEmail(account_email)
+
+  if (!accountData) {
+    req.flash("notice", "Email not found. Please register first.")
+    return res.status(400).render("account/login", {
+      title: "Login",
+      nav,
+      errors: null,
+      account_email,
+    })
+  }
+
+  // Get the actual account record
+  const sql = "SELECT * FROM account WHERE account_email = $1"
+  const result = await pool.query(sql, [account_email])
+  const account = result.rows[0]
+
+  // Compare passwords
+  const match = await bcrypt.compare(account_password, account.account_password)
+
+  if (!match) {
+    req.flash("notice", "Incorrect password.")
+    return res.status(400).render("account/login", {
+      title: "Login",
+      nav,
+      errors: null,
+      account_email,
+    })
+  }
+
+  // SUCCESS
+  req.flash("notice", `Welcome back, ${account.account_firstname}.`)
+  return res.redirect("/")
+}
+
+module.exports = { buildLogin, buildRegister, registerAccount, loginAccount }

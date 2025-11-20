@@ -20,10 +20,10 @@
 
                     <form id="loginForm" action="/account/login" method="post">
                         <label for="email">Email Address</label>
-                        <input type="email" id="accountEmail" name="account_email" required placeholder="Enter a valid email address">
+                        <input type="email" id="accountEmail" name="account_email" required placeholder="Enter a valid email address" value="<%= locals.account_email %>">
 
                         <label for="password">Password</label>
-                        <input type="password" id="accountPassword" name="account_email" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+                        <input type="password" id="accountPassword" name="account_password" required>
 
                         <button type="submit" class="login-btn">Login</button>
                     </form>

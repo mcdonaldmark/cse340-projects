@@ -89,7 +89,26 @@ validate.loginRules = () => {
   ]
 }
 
+/* *******************************
+ * Check login data and return errors or continue to login
+ ******************************** */
+validate.checkLoginData = async (req, res, next) => {
+  // validationResult works because it's imported
+  const errors = validationResult(req);
 
+  if (!errors.isEmpty()) {
+    const nav = await utilities.getNav();
+    return res.status(400).render("account/login", {
+      title: "Login",
+      nav,
+      errors,                 // validationResult object
+      notice: req.flash("notice"),
+      account_email: req.body.account_email // sticky field
+    });
+  }
+
+  next(); // continue to loginAccount if no validation errors
+};
 
 
 

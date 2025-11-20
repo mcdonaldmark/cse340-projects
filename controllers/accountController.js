@@ -1,17 +1,22 @@
 const utilities = require("../utilities/")
 const accountModel = require("../models/account-model");
 const bcrypt = require("bcryptjs");
+const { validationResult } = require("express-validator");
 
 /* ****************************************
  *  Deliver login view
  * *************************************** */
 async function buildLogin(req, res, next) {
-  let nav = await utilities.getNav()
+  let nav = await utilities.getNav();
+  // Create an empty validationResult object for the first render
+  const errors = validationResult(req); 
   res.render("account/login", {
     title: "Login",
     nav,
-    notice: req.flash("notice")
-  })
+    notice: req.flash("notice"),
+    errors,                 // <--- this works with errors.array()
+    account_email: ""       // optional sticky field
+  });
 }
 
 /* ****************************************
@@ -73,4 +78,61 @@ async function buildRegister(req, res, next) {
   })
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount }
+/* ****************************************
+*  Process Login
+* *************************************** */
+async function loginAccount(req, res) {
+  let nav = await utilities.getNav()
+  const { account_email, account_password } = req.body
+  let errors = null // initialize errors
+
+  try {
+    // Look up the account by email
+    const accountData = await accountModel.getAccountByEmail(account_email)
+    if (!accountData) {
+      errors = [{ msg: "Email or password incorrect." }]
+      return res.status(400).render("account/login", {
+        title: "Login",
+        nav,
+        notice: req.flash("notice"),
+        errors,
+        account_email // for sticky email
+      })
+    }
+
+    // Compare hashed password
+    const passwordMatch = await bcrypt.compare(account_password, accountData.account_password)
+    if (!passwordMatch) {
+      errors = [{ msg: "Email or password incorrect." }]
+      return res.status(400).render("account/login", {
+        title: "Login",
+        nav,
+        notice: req.flash("notice"),
+        errors,
+        account_email
+      })
+    }
+
+    // Login successful → store session
+    req.session.account = {
+      account_id: accountData.account_id,
+      account_firstname: accountData.account_firstname,
+      account_email: accountData.account_email
+    }
+    res.redirect("/account/admin") // or your logged-in landing page
+  } catch (error) {
+    console.error(error)
+    errors = [{ msg: "Login failed. Please try again." }]
+    res.status(500).render("account/login", {
+      title: "Login",
+      nav,
+      notice: req.flash("notice"),
+      errors,
+      account_email
+    })
+  }
+}
+
+
+
+module.exports = { buildLogin, buildRegister, registerAccount, loginAccount }

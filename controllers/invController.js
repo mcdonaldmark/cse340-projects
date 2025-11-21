@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const { validationResult } = require("express-validator")
 const utilities = require("../utilities/")
 
 const invCont = {}
@@ -43,6 +44,48 @@ invCont.buildManagement = async function (req, res, next) {
     nav,
     messages: req.flash("notice")
   });
+};
+
+/* ********************************
+ *  Deliver Add Classification Form
+ ******************************** */
+invCont.buildAddClassification = async function (req, res) {
+  let nav = await utilities.getNav();
+  res.render("inventory/add-classification", {
+    title: "Add Classification",
+    nav,
+    errors: null,
+    messages: req.flash("notice")
+  });
+};
+
+/* ********************************
+ *  Process Add Classification Form
+ ******************************** */
+invCont.addClassification = async function (req, res) {
+  let nav = await utilities.getNav();
+  const { classification_name } = req.body;
+
+  const result = await invModel.addClassification(classification_name);
+
+  if (result) {
+    req.flash("notice", `Successfully added ${classification_name} classification.`);
+    nav = await utilities.getNav(); // regenerate nav to include new classification
+    return res.render("inventory/management", {
+      title: "Inventory Management",
+      nav,
+      messages: req.flash("notice"),
+      errors: null
+    });
+  } else {
+    req.flash("notice", "Failed to add classification.");
+    return res.render("inventory/add-classification", {
+      title: "Add Classification",
+      nav,
+      messages: req.flash("notice"),
+      errors: null
+    });
+  }
 };
 
 module.exports = invCont;

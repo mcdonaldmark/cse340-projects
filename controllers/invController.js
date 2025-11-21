@@ -88,4 +88,87 @@ invCont.addClassification = async function (req, res) {
   }
 };
 
+// Deliver Add Inventory Form
+invCont.buildAddInventory = async function (req, res) {
+  let nav = await utilities.getNav()
+  const classificationList = await utilities.buildClassificationList()
+  res.render("inventory/add-inventory", {
+    title: "Add Vehicle",
+    nav,
+    classificationList,
+    errors: null,
+    messages: req.flash("notice"),
+    vehicle: null
+  })
+}
+
+// Deliver Add Inventory Form
+invCont.buildAddInventory = async function (req, res) {
+  let nav = await utilities.getNav()
+  const classificationList = await utilities.buildClassificationList()
+  res.render("inventory/add-inventory", {
+    title: "Add Vehicle",
+    nav,
+    classificationList,
+    errors: null,
+    messages: req.flash("notice"),
+    vehicle: null
+  })
+}
+
+// Process Add Inventory Form
+invCont.addInventory = async function (req, res) {
+  const { classification_id, inv_make, inv_model, inv_description, inv_year, inv_miles, inv_image, inv_thumbnail, inv_price, inv_color } = req.body
+  const errors = validationResult(req)
+  let nav = await utilities.getNav()
+  const classificationList = await utilities.buildClassificationList(classification_id)
+
+  if (!errors.isEmpty()) {
+    return res.render("inventory/add-inventory", {
+      title: "Add Vehicle",
+      nav,
+      classificationList,
+      errors: errors.array(),
+      messages: null,
+      vehicle: req.body
+    })
+  }
+
+  const vehicleData = {
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_year: parseInt(inv_year),
+    inv_miles: parseInt(inv_miles),
+    inv_image: inv_image || "/images/no-image.png",
+    inv_thumbnail: inv_thumbnail || "/images/no-image.png",
+    inv_price: parseFloat(inv_price) || 0,
+    inv_color
+  }
+
+  const result = await invModel.addInventory(vehicleData)
+
+  if (result) {
+    req.flash("notice", `Successfully added ${inv_make} ${inv_model}.`)
+    nav = await utilities.getNav()
+    return res.render("inventory/management", {
+      title: "Inventory Management",
+      nav,
+      messages: req.flash("notice"),
+      errors: null
+    })
+  } else {
+    req.flash("notice", "Failed to add vehicle.")
+    return res.render("inventory/add-inventory", {
+      title: "Add Vehicle",
+      nav,
+      classificationList,
+      messages: req.flash("notice"),
+      errors: null,
+      vehicle: req.body
+    })
+  }
+}
+
 module.exports = invCont;

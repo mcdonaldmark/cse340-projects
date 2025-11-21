@@ -56,4 +56,31 @@ async function addClassification(classification_name) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, addClassification}
+async function addInventory(vehicle) {
+  try {
+    const sql = `
+      INSERT INTO inventory
+      (classification_id, inv_make, inv_model, inv_description, inv_year, inv_miles, inv_image, inv_thumbnail, inv_price, inv_color)
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+      RETURNING *;
+    `
+    const values = [
+      vehicle.classification_id,
+      vehicle.inv_make,
+      vehicle.inv_model,
+      vehicle.inv_description,
+      vehicle.inv_year,
+      vehicle.inv_miles,
+      vehicle.inv_image,
+      vehicle.inv_thumbnail,
+      vehicle.inv_price,
+      vehicle.inv_color
+    ]
+    return await pool.query(sql, values)
+  } catch (error) {
+    console.error("Add Inventory Error:", error)
+    return null
+  }
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, addClassification, addInventory}

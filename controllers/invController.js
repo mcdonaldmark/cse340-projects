@@ -35,5 +35,14 @@ invCont.buildByInvId = async function (req, res, next) {
   })
 }
 
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav();
 
-module.exports = invCont
+  res.render("inventory/management", {
+    title: "Inventory Management",
+    nav,
+    messages: req.flash("notice")
+  });
+};
+
+module.exports = invCont;

@@ -7,4 +7,6 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 
 router.get("/detail/:inv_id", invController.buildByInvId);
 
+router.get("/", invController.buildManagement);
+
 module.exports = router;

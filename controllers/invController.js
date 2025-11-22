@@ -88,7 +88,6 @@ invCont.addClassification = async function (req, res) {
   }
 };
 
-// Deliver Add Inventory Form
 invCont.buildAddInventory = async function (req, res) {
   let nav = await utilities.getNav()
   const classificationList = await utilities.buildClassificationList()
@@ -102,7 +101,6 @@ invCont.buildAddInventory = async function (req, res) {
   })
 }
 
-// Deliver Add Inventory Form
 invCont.buildAddInventory = async function (req, res) {
   let nav = await utilities.getNav()
   const classificationList = await utilities.buildClassificationList()
@@ -116,7 +114,6 @@ invCont.buildAddInventory = async function (req, res) {
   })
 }
 
-// Process Add Inventory Form
 invCont.addInventory = async function (req, res) {
   const { classification_id, inv_make, inv_model, inv_description, inv_year, inv_miles, inv_image, inv_thumbnail, inv_price, inv_color } = req.body
   const errors = validationResult(req)

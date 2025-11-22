@@ -23,10 +23,8 @@ async function registerAccount(req, res) {
   let nav = await utilities.getNav()
   const { account_firstname, account_lastname, account_email, account_password } = req.body
 
-  // Hash the password before storing
   let hashedPassword
   try {
-    // regular password and cost (salt is generated automatically)
     hashedPassword = await bcrypt.hashSync(account_password, 10)
   } catch (error) {
     req.flash("notice", 'Sorry, there was an error processing the registration.')
@@ -86,7 +84,6 @@ async function loginAccount(req, res) {
   let nav = await utilities.getNav()
   const { account_email, account_password } = req.body
 
-  // Get account by email
   const accountData = await accountModel.checkExistingEmail(account_email)
 
   if (!accountData) {
@@ -99,12 +96,10 @@ async function loginAccount(req, res) {
     })
   }
 
-  // Get the actual account record
   const sql = "SELECT * FROM account WHERE account_email = $1"
   const result = await pool.query(sql, [account_email])
   const account = result.rows[0]
 
-  // Compare passwords
   const match = await bcrypt.compare(account_password, account.account_password)
 
   if (!match) {
@@ -117,7 +112,6 @@ async function loginAccount(req, res) {
     })
   }
 
-  // SUCCESS
   req.flash("notice", `Welcome back, ${account.account_firstname}.`)
   return res.redirect("/")
 }

@@ -8,7 +8,6 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin));
 
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
 
-// Process the registration data
 router.post(
   "/register",
   regValidate.registrationRules(),
@@ -16,7 +15,6 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 )
 
-// Process login
 router.post(
   "/login",
   regValidate.loginRules(),

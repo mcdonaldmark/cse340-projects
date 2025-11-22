@@ -13,10 +13,8 @@ const invValidate = require("../utilities/inventory-validation");
 
 router.get("/add-inventory", invController.buildAddInventory)
 
-// Deliver the form
 router.get("/add-classification", invController.buildAddClassification);
 
-// Handle the form submission
 router.post(
   "/add-classification",
   invValidate.classificationRules(),
@@ -24,7 +22,6 @@ router.post(
   invController.addClassification
 );
 
-// Process Add Inventory Form
 const { body } = require("express-validator")
 
 router.post(

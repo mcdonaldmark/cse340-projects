@@ -53,7 +53,6 @@ h1 {
   font-size: 2.6rem;
 }
 
-
 nav {
   background-color: var(--accent-color);
 }
@@ -66,21 +65,22 @@ nav ul {
   padding: 0.5rem;
 }
 
-nav li {
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 nav li:hover {
   text-decoration: underline;
 }
 
+nav ul li a {
+  color: white;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: cyan;
+}
 
 main {
   padding: 1rem;
 }
-
 
 .hero {
   position: relative;
@@ -101,10 +101,40 @@ main {
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(255, 255, 255, 0.25);
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 1rem;
   border-radius: 8px;
   max-width: 550px;
   text-align: left;
+}
+
+@media (max-width: 767px) {
+  .hero-box {
+    top: 0%;
+    margin-top: -12px;
+    left: 0%;
+    transform: none;
+    width: 45%;
+    padding: 1rem 1.2rem;
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+
+  .hero-box h2 a.hero-title {
+    font-size: 1.0rem;
+  }
+
+  .hero-box ul {
+    font-size: 0.8rem;
+  }
+
+  .hero-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .hero-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
 }
 
 .hero-title {
@@ -135,7 +165,6 @@ main {
 .hero-btn:hover {
   background-color: #008ecc;
 }
-
 
 .upgrades {
   text-align: center;
@@ -182,7 +211,6 @@ main {
   color: blue;
 }
 
-
 .reviews {
   margin-top: 1rem;
 }
@@ -196,7 +224,6 @@ main {
   margin-bottom: 0.5rem;
   text-align: left;
 }
-
 
 .reviews-upgrades-wrapper {
   display: flex;

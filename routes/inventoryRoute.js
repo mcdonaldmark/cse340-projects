@@ -32,9 +32,23 @@ router.post(
   body("classification_id").notEmpty().withMessage("Classification is required."),
   body("inv_make").trim().notEmpty().withMessage("Make is required."),
   body("inv_model").trim().notEmpty().withMessage("Model is required."),
-  body("inv_description").trim().notEmpty().withMessage("Description is required."),
-  body("inv_price").isFloat({ gt: 0 }).withMessage("Price must be a positive number."),
-  body("inv_color").trim().notEmpty().withMessage("Color is required."),
+  body("inv_description")
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 500 })
+    .withMessage("Description cannot exceed 500 characters."),
+  body("inv_year")
+    .notEmpty().withMessage("Year is required.")
+    .matches(/^\d{4}$/).withMessage("Year must be a 4-digit number."),
+  body("inv_miles")
+    .notEmpty().withMessage("Mileage is required.")
+    .isInt({ min: 0 }).withMessage("Mileage must be a positive integer."),
+  body("inv_price")
+    .notEmpty().withMessage("Price is required.")
+    .isFloat({ gt: 0 }).withMessage("Price must be a positive number."),
+  body("inv_color")
+    .trim()
+    .notEmpty().withMessage("Color is required."),
   invController.addInventory
 )
 

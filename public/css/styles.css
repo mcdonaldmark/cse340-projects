@@ -598,4 +598,661 @@ footer {
   margin-top: -10px;
   margin-right: 919px;
 }
+
+/* ================================
+   INVENTORY SYSTEM CUSTOM CLASSES
+   (No conflict with existing rules)
+================================ */
+
+/* --- Page Wrapper Left Alignment --- */
+.inv-page {
+  width: 90%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  left: -10px;
+  /* shifts everything slightly left */
+}
+
+.inv-heading {
+  margin-left: -800px;
+  font-size: 2rem;
+  margin-top: -100px;
+  margin-right: 700px;
+}
+
+/* --- Flash message and error containers --- */
+.inv-flash,
+.inv-errors {
+  margin-left: -10px;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.inv-flash {
+  background: #e7f4ff;
+  border-left: 5px solid #1574c2;
+  color: #004d7a;
+}
+
+.inv-errors {
+  background: #ffe8e8;
+  border-left: 5px solid #d20000;
+  color: #6a0000;
+}
+
+.inv-errors p {
+  margin: 4px 0;
+}
+
+/* --- Form Wrapper --- */
+.inv-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-left: -10px;
+  margin-right: 140px;
+  /* align with heading + messages */
+
+      /* Box styling */
+        padding: 20px;
+        padding-left: 100px;
+        padding-right: 100px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Form labels --- */
+.inv-label {
+  font-weight: bold;
+}
+
+/* --- Form inputs --- */
+.inv-input
+ {
+  padding: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inv-select {
+    padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+      margin-left: -10px;
+      height: 45px;
+}
+
+.inv-textarea {
+      padding: 10px;
+      padding-right: 20px;
+      padding-left: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+}
+
+.inv-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* --- Form hint --- */
+.inv-hint {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: -10px;
+}
+
+/* --- Submit button --- */
+.inv-btn {
+  width: fit-content;
+  padding: 10px 20px;
+  background: #1574c2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.inv-btn:hover {
+  background: #0f5a97;
+}
+
+/* --- Management Page Links --- */
+.inv-links {
+  margin-left: -10px;
+  list-style: none;
+  padding: 0;
+}
+
+.inv-links li {
+  margin: 0.4rem 0;
+}
+
+.inv-links a {
+  color: #1574c2;
+  text-decoration: none;
+}
+
+.inv-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- Detail Page Raw Data Section --- */
+.inv-raw-box {
+  margin-left: -10px;
+  margin-top: 2rem;
+}
+
+.inv-raw-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Only shade invalid inputs if the user typed something */
+.inv-input:invalid:not(:placeholder-shown) {
+    border-color: #d20000;
+    background-color: #ffe8e8;
+}
+
+/* Focus shadow for invalid but non-empty input */
+.inv-input:focus:invalid:not(:placeholder-shown) {
+    outline: none;
+    box-shadow: 0 0 4px rgba(210, 0, 0, 0.6);
+}
+
+/* Only shade valid inputs that have been filled */
+.inv-input:valid:not(:placeholder-shown),
+.inv-textarea:valid:not(:placeholder-shown),
+.inv-select:valid:not(:placeholder-shown) {
+  background-color: #e6ffed;
+  /* light green background */
+  border-color: #28a745;
+  /* green border */
+}
+
+/* Optional: add focus effect for valid input */
+.inv-input:focus:valid:not(:placeholder-shown),
+.inv-textarea:focus:valid:not(:placeholder-shown),
+.inv-select:focus:valid:not(:placeholder-shown) {
+  outline: none;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.6);
+  /* green glow */
+}
+
+/* --- Headings (move left without touching global h1) --- */
+.class-heading {
+  margin-left: -1000px;
+  font-size: 2rem;
+  margin-top: -100px;
+  margin-right: 600px;
+}
+
+/* --- Flash message and error containers --- */
+.class-flash,
+.class-errors {
+  margin-left: -10px;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.class-flash {
+  background: #e7f4ff;
+  border-left: 5px solid #1574c2;
+  color: #004d7a;
+}
+
+.class-errors {
+  background: #ffe8e8;
+  border-left: 5px solid #d20000;
+  color: #6a0000;
+}
+
+.class-errors p {
+  margin: 4px 0;
+}
+
+/* --- Form Wrapper --- */
+.class-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-left: -10px;
+  margin-right: 130px;
+  /* align with heading + messages */
+
+  /* Box styling */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Form labels --- */
+.class-label {
+  font-weight: bold;
+}
+
+/* --- Form inputs --- */
+.class-input,
+.class-textarea,
+.class-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.class-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* --- Form hint --- */
+.class-hint {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: -10px;
+}
+
+/* --- Submit button --- */
+.class-btn {
+  width: fit-content;
+  padding: 10px 20px;
+  background: #1574c2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.class-btn:hover {
+  background: #0f5a97;
+}
+
+/* --- Management Page Links --- */
+.class-links {
+  margin-left: -10px;
+  list-style: none;
+  padding: 0;
+}
+
+.class-links li {
+  margin: 0.4rem 0;
+}
+
+.class-links a {
+  color: #1574c2;
+  text-decoration: none;
+}
+
+.class-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- Detail Page Raw Data Section --- */
+.class-raw-box {
+  margin-left: -10px;
+  margin-top: 2rem;
+}
+
+.class-raw-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Only shade invalid inputs if the user typed something */
+.class-input:invalid:not(:placeholder-shown) {
+  border-color: #d20000;
+  background-color: #ffe8e8;
+}
+
+/* Focus shadow for invalid but non-empty input */
+.class-input:focus:invalid:not(:placeholder-shown) {
+  outline: none;
+  box-shadow: 0 0 4px rgba(210, 0, 0, 0.6);
+}
+
+/* Only shade valid inputs that have been filled */
+.class-input:valid:not(:placeholder-shown),
+.class-textarea:valid:not(:placeholder-shown),
+.class-select:valid:not(:placeholder-shown) {
+  background-color: #e6ffed;
+  /* light green background */
+  border-color: #28a745;
+  /* green border */
+}
+
+/* Optional: add focus effect for valid input */
+.class-input:focus:valid:not(:placeholder-shown),
+.class-textarea:focus:valid:not(:placeholder-shown),
+.class-select:focus:valid:not(:placeholder-shown) {
+  outline: none;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.6);
+  /* green glow */
+}
+
+/* ================================
+   Inventory Management Page Styles
+================================ */
+
+/* Page wrapper */
+.inv-mgmt-page {
+  width: 90%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Heading */
+.inv-mgmt-heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  margin-right: 650px;
+  margin-top: -75px;
+  /* aligns heading to the left */
+}
+
+/* Flash message */
+.inv-mgmt-flash {
+  padding: 12px 15px;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  background-color: #e7f4ff;
+  border-left: 5px solid #1574c2;
+  color: #004d7a;
+  text-align: left;
+  /* align text to left */
+}
+
+/* Links list */
+.inv-mgmt-links {
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 630px;
+  margin-left: -200px;
+  /* align to left edge */
+}
+
+.inv-mgmt-links li {
+  margin: 0.5rem 0;
+}
+
+.inv-mgmt-links a {
+  text-decoration: none;
+  color: #1574c2;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.inv-mgmt-links a:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   ACCOUNT LOGIN / REGISTER PAGE
+================================= */
+
+/* Page wrapper */
+.login-wrapper {
+  width: 90%;
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Page heading */
+.login-wrapper h1 {
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #1574c2;
+}
+
+/* Flash messages and errors */
+.notice {
+  background-color: #ffe8e8;
+  border-left: 5px solid #d20000;
+  color: #6a0000;
+  padding: 10px 15px;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  list-style-type: none;
+}
+
+.notice li {
+  margin-bottom: 5px;
+}
+
+/* Form styling */
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#loginForm label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+#loginForm input {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Placeholder text color */
+#loginForm input::placeholder {
+  color: #999;
+}
+
+/* Submit button */
+.login-btn {
+  padding: 10px 20px;
+  background-color: #1574c2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-btn:hover {
+  background-color: #0f5a97;
+}
+
+/* Register link */
+.register-link {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.register-link a {
+  color: #1574c2;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Input validation feedback */
+#loginForm input:invalid:not(:placeholder-shown) {
+  border-color: #d20000;
+  background-color: #ffe8e8;
+}
+
+#loginForm input:valid:not(:placeholder-shown) {
+  border-color: #28a745;
+  background-color: #e6ffed;
+}
+
+/* ================================
+   REGISTRATION PAGE STYLES
+================================ */
+
+/* Page Wrapper */
+.reg-page {
+  width: 90%;
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Heading */
+.reg-heading {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  margin-right: 600px;
+  margin-top: -130px;
+}
+
+/* Validation errors */
+.reg-errors {
+  list-style: none;
+  padding: 10px;
+  margin-bottom: 1rem;
+  background-color: #ffe8e8;
+  border-left: 5px solid #d20000;
+  color: #6a0000;
+  border-radius: 6px;
+}
+
+/* Form wrapper */
+.reg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Form group */
+.reg-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.reg-group label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+/* Inputs */
+.reg-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Placeholder color */
+.reg-group input::placeholder {
+  color: #999;
+}
+
+/* Password hint */
+.reg-password-hint {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+/* Show password button */
+#togglePassword {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  background-color: #1574c2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#togglePassword:hover {
+  background-color: #0f5a97;
+}
+
+/* Submit button */
+.reg-btn {
+  padding: 10px 20px;
+  background-color: #1574c2;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.reg-btn:hover {
+  background-color: #0f5a97;
+}
+
+/* Valid input */
+.reg-group input:valid:not(:placeholder-shown) {
+  border-color: #28a745;
+  background-color: #e6ffed;
+}
+
+/* Invalid input */
+.reg-group input:invalid:not(:placeholder-shown) {
+  border-color: #d20000;
+  background-color: #ffe8e8;
+}
+
+/* Optional focus glow */
+.reg-group input:focus:valid {
+  outline: none;
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.6);
+}
+
+.reg-group input:focus:invalid {
+  outline: none;
+  box-shadow: 0 0 4px rgba(210, 0, 0, 0.6);
+}
 }

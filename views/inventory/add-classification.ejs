@@ -1,46 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<main class="inv-page">
+    <h1 class="class-heading">Add New Classification</h1>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Classification</title>
-</head>
+    <% if (messages && messages.length> 0) { %>
+        <div class="class-flash">
+            <%= messages %>
+        </div>
+        <% } %>
 
-<body>
-            <main>
-                <h1>Add New Classification</h1>
+            <% if (errors && errors.length> 0) { %>
+                <div class="inv-errors">
+                    <% errors.forEach(err=> { %>
+                        <p>
+                            <%= err.msg %>
+                        </p>
+                        <% }) %>
+                </div>
+                <% } %>
 
-                <!-- Flash message -->
-                <% if (messages && messages.length> 0) { %>
-                    <div class="notice">
-                        <%= messages %>
-                    </div>
-                    <% } %>
+                    <form class="class-form" action="/inv/add-classification" method="post">
+                        <p><em>Field is required</em></p>
+                        <label class="class-label" for="classification_name">Classification Name:</label>
+                        <input class="class-input" type="text" id="classification_name" name="classification_name" placeholder="Enter classification"
+                            pattern="^[A-Za-z0-9]+$" required>
 
-                        <!-- Validation errors -->
-                        <% if (errors && errors.length> 0) { %>
-                            <div class="errors">
-                                <% errors.forEach(err=> { %>
-                                    <p>
-                                        <%= err.msg %>
-                                    </p>
-                                    <% }) %>
-                            </div>
-                            <% } %>
-                                <p>Field is required</p>
-                                <form id="addClassificationForm" action="/inv/add-classification" method="post">
-                                    <label for="classification_name">Classification Name:</label>
-                                    <input type="text" id="classification_name" name="classification_name"
-                                        pattern="^[A-Za-z0-9]+$" required>
-                                    <p class="form-hint">
-                                        * Classification name cannot contain spaces or special characters.
-                                    </p>
+                        <p class="class-hint">* Classification name cannot contain spaces or special characters.</p>
 
-                                    <button type="submit">Add Classification</button>
-                                </form>
-            </main>
-
-</body>
-
-</html>
+                        <button class="class-btn" type="submit">Add Classification</button>
+                    </form>
+</main>

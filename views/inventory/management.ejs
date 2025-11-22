@@ -1,29 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<main class="inv-mgmt-page">
+    <h1 class="inv-mgmt-heading">Vehicle Management</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management</title>
-</head>
+    <!-- Flash Message -->
+    <% if (messages && messages.length> 0) { %>
+        <div class="inv-mgmt-flash">
+            <%= messages[0] %>
+        </div>
+        <% } %>
 
-<body>
-            <main>
-                <h1>Inventory Management</h1>
-
-                <!-- Flash Message -->
-                <% if (messages && messages.length> 0) { %>
-                    <div class="notice">
-                        <%= messages[0] %>
-                    </div>
-                    <% } %>
-
-                        <ul>
-                            <li><a href="/inv/add-classification">Add New Classification</a></li>
-                            <li><a href="/inv/add-inventory">Add New Inventory</a></li>
-                        </ul>
-            </main>
-
-</body>
-
-</html>
+            <ul class="inv-mgmt-links">
+                <li><a href="/inv/add-classification">Add New Classification</a></li>
+                <li><a href="/inv/add-inventory">Add New Inventory</a></li>
+            </ul>
+</main>

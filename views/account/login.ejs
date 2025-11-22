@@ -2,48 +2,57 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>
         <%= title %>
     </title>
-    <link rel="stylesheet" href="/css/account.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-        <main class="login-wrapper">
+    <main class="login-wrapper">
 
-            <h1>
-                <%= title %>
-            </h1>
+        <h1 class="login-heading">
+            <%= title %>
+        </h1>
 
-            <%- messages() %>
-
-            <% if (errors) { %>
-                <ul class="notice">
-                    <% errors.array().forEach(error=> { %>
-                        <li>
-                            <%= error.msg %>
-                        </li>
-                        <% }) %>
-                </ul>
+        <!-- Flash / Validation Messages -->
+        <% const flashMessages=messages(); %>
+            <% if (flashMessages) { %>
+                <div class="notice">
+                    <%- flashMessages %>
+                </div>
                 <% } %>
 
-                    <form id="loginForm" action="/account/login" method="post">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="accountEmail" name="account_email" required placeholder="Enter a valid email address" value="<%= account_email %>">
+                    <% if (errors && errors.array().length> 0) { %>
+                        <ul class="notice">
+                            <% errors.array().forEach(error=> { %>
+                                <li>
+                                    <%= error.msg %>
+                                </li>
+                                <% }) %>
+                        </ul>
+                        <% } %>
 
-                        <label for="password">Password</label>
-                        <input type="password" id="accountPassword" name="account_password" required>
+                            <form id="loginForm" class="login-form" action="/account/login" method="post">
 
-                        <button type="submit" class="login-btn">Login</button>
-                    </form>
+                                <label for="accountEmail" class="login-label">Email Address</label>
+                                <input type="email" id="accountEmail" name="account_email" required
+                                    placeholder="Enter a valid email address" value="<%= account_email %>"
+                                    class="login-input">
 
-                    <p class="register-link">
-                        No account yet?
-                        <a href="/account/register">Register here</a>
-                    </p>
+                                <label for="accountPassword" class="login-label">Password</label>
+                                <input type="password" id="accountPassword" name="account_password" required placeholder="Please enter an password."
+                                    class="login-input">
 
-        </main>
+                                <button type="submit" class="login-btn">Login</button>
+                            </form>
+
+                            <p class="register-link">
+                                No account yet? <a href="/account/register">Register here</a>
+                            </p>
+
+    </main>
 </body>
 
 </html>

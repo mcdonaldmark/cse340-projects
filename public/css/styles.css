@@ -139,7 +139,6 @@ main {
 
 /* Upgrades Section */
 .upgrades {
-  margin-top: 2rem;
   text-align: center;
 }
 
@@ -197,6 +196,21 @@ main {
 .reviews li {
   margin-bottom: 0.5rem;
   text-align: left;
+}
+
+/* Reviews + Upgrades side-by-side wrapper */
+.reviews-upgrades-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* stacked on mobile */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.reviews-upgrades-wrapper .upgrades,
+.reviews-upgrades-wrapper .reviews-section {
+  flex: 1;
+  /* equal width on desktop */
 }
 
 /* Footer */
@@ -488,5 +502,22 @@ footer {
   .vehicle-image,
   .vehicle-info {
     flex: 1;
+  }
+
+  /* Reviews + Upgrades side-by-side on desktop */
+  .reviews-upgrades-wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .reviews-upgrades-wrapper .upgrades {
+    order: 1;
+    /* left */
+    margin-right: 2rem;
+  }
+
+  .reviews-upgrades-wrapper .reviews-section {
+    order: 2;
+    /* right */
   }
 }

@@ -109,8 +109,11 @@ main {
 
 @media (max-width: 767px) {
   .upgrade-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    justify-items: center;
+  }
 
   .hero-box {
     top: 0%;

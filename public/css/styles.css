@@ -34,7 +34,6 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* Header */
 #top-header {
   background-color: var(--primary-color);
   color: white;
@@ -54,7 +53,7 @@ h1 {
   font-size: 2.6rem;
 }
 
-/* Navigation */
+
 nav {
   background-color: var(--accent-color);
 }
@@ -77,12 +76,12 @@ nav li:hover {
   text-decoration: underline;
 }
 
-/* Main content */
+
 main {
   padding: 1rem;
 }
 
-/* Hero Section */
+
 .hero {
   position: relative;
   margin-top: 2rem;
@@ -137,7 +136,7 @@ main {
   background-color: #008ecc;
 }
 
-/* Upgrades Section */
+
 .upgrades {
   text-align: center;
 }
@@ -183,7 +182,7 @@ main {
   color: blue;
 }
 
-/* Reviews */
+
 .reviews {
   margin-top: 1rem;
 }
@@ -198,11 +197,10 @@ main {
   text-align: left;
 }
 
-/* Reviews + Upgrades side-by-side wrapper */
+
 .reviews-upgrades-wrapper {
   display: flex;
   flex-direction: column;
-  /* stacked on mobile */
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -210,10 +208,8 @@ main {
 .reviews-upgrades-wrapper .upgrades,
 .reviews-upgrades-wrapper .reviews-section {
   flex: 1;
-  /* equal width on desktop */
 }
 
-/* Footer */
 footer {
   background-color: var(--primary-color);
   color: black;
@@ -223,7 +219,6 @@ footer {
   font-size: 1.2rem;
 }
 
-/* Inventory Display */
 #inv-display {
   display: grid;
   grid-template-columns: 1fr;
@@ -255,7 +250,6 @@ footer {
   object-fit: cover;
 }
 
-/* Vehicle detail */
 .vehicle-detail {
   display: flex;
   flex-direction: column;
@@ -289,7 +283,6 @@ footer {
   padding: 0;
 }
 
-/* Raw Data Section */
 .inv-raw {
   margin: 2rem auto;
   padding: 1rem;
@@ -299,7 +292,6 @@ footer {
   border-radius: 6px;
 }
 
-/* Notice / flash messages */
 .alert-notice,
 .notice,
 .inv-flash,
@@ -309,14 +301,15 @@ footer {
   padding: 12px 15px;
   border-radius: 6px;
   margin-bottom: 1rem;
+  list-style: none;
 }
 
 .alert-notice {
   color: red;
   font-weight: bold;
+  list-style: none;
 }
 
-/* Flash types */
 .inv-flash,
 .class-flash {
   background: #e7f4ff;
@@ -332,7 +325,6 @@ footer {
   color: #6a0000;
 }
 
-/* Forms */
 .inv-form,
 .class-form,
 .reg-form,
@@ -375,7 +367,6 @@ footer {
   resize: vertical;
 }
 
-/* Valid / invalid states */
 .inv-input:valid,
 .inv-textarea:valid,
 .inv-select:valid,
@@ -424,7 +415,6 @@ footer {
   outline: none;
 }
 
-/* Buttons */
 .inv-btn,
 .class-btn,
 .reg-btn,
@@ -447,7 +437,6 @@ footer {
   background-color: #0f5a97;
 }
 
-/* Links */
 .register-link,
 .inv-links,
 .class-links,
@@ -472,7 +461,6 @@ footer {
   text-decoration: underline;
 }
 
-/* Responsive */
 @media (min-width: 768px) {
   main {
     display: flex;
@@ -504,7 +492,6 @@ footer {
     flex: 1;
   }
 
-  /* Reviews + Upgrades side-by-side on desktop */
   .reviews-upgrades-wrapper {
     flex-direction: row;
     align-items: flex-start;
@@ -512,12 +499,10 @@ footer {
 
   .reviews-upgrades-wrapper .upgrades {
     order: 1;
-    /* left */
     margin-right: 2rem;
   }
 
   .reviews-upgrades-wrapper .reviews-section {
     order: 2;
-    /* right */
   }
 }

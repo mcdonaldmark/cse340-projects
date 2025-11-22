@@ -109,11 +109,8 @@ main {
 
 @media (max-width: 767px) {
   .upgrade-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    justify-items: center;
-  }
+      grid-template-columns: repeat(2, 1fr);
+    }
 
   .hero-box {
     top: 0%;
@@ -193,7 +190,7 @@ main {
 
 .upgrade-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   justify-items: center;
 }

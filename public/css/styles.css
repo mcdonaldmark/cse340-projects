@@ -108,6 +108,13 @@ main {
 }
 
 @media (max-width: 767px) {
+  .upgrade-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    justify-items: center;
+  }
+
   .hero-box {
     top: 0%;
     margin-top: -25px;
@@ -134,11 +141,6 @@ main {
   .hero-text {
     margin-top: 1rem;
     font-size: 0.9rem;
-  }
-
-  .upgrade-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
   }
 
   .upgrade-card {

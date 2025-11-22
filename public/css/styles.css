@@ -110,10 +110,10 @@ main {
 @media (max-width: 767px) {
   .hero-box {
     top: 0%;
-    margin-top: -12px;
+    margin-top: -25px;
     left: 0%;
     transform: none;
-    width: 45%;
+    width: 55%;
     padding: 1rem 1.2rem;
     background-color: rgba(255, 255, 255, 0.55);
   }

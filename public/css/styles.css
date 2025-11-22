@@ -157,15 +157,22 @@ main {
 
 .upgrades {
   margin-top: 2rem;
+  /* keep spacing from reviews */
+  text-align: center;
+  /* center heading */
+}
+
+.upgrades h2 {
+  margin-bottom: 1rem;
+  margin-top: 80px;
 }
 
 .upgrade-grid {
   display: grid;
-  grid-template-columns: repeat(2, 160px);
-  grid-template-rows: repeat(2, auto);
-  gap: 10px;
-  justify-content: left;
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  /* centers each upgrade card */
 }
 
 .upgrade-card {
@@ -1034,7 +1041,8 @@ footer {
   text-align: left;
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #1574c2;
+  margin-right: 600px;
+  margin-top: -130px;
 }
 
 /* Flash messages and errors */

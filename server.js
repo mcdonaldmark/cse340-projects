@@ -46,6 +46,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cookieParser())
 
+app.use(utilities.checkJWTToken)
+
 /* ***********************
 * View Engine and Templates
 *************************/

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body>
+
+    <main>
+        <h1>Account Management</h1>
+        <h2>You're logged in</h2>
+
+        <!-- Flash Messages -->
+        <% if (messages && messages.length> 0) { %>
+            <div class="notice">
+                <% messages.forEach(function(msg) { %>
+                    <p>
+                        <%= msg %>
+                    </p>
+                    <% }) %>
+            </div>
+            <% } %>
+
+                <!-- Validation Errors -->
+                <% if (errors && errors.array().length> 0) { %>
+                    <ul class="notice">
+                        <% errors.array().forEach(error=> { %>
+                            <li>
+                                <%= error.msg %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <% } %>
+
+    </main>
+
+</body>
+
+</html>

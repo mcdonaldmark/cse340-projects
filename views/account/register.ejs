@@ -17,7 +17,15 @@
             <%= title %>
         </h1>
 
-        <%- messages() %>
+        <% if (messages && messages.length> 0) { %>
+            <div class="notice">
+                <% messages.forEach(function(msg) { %>
+                    <p>
+                        <%= msg %>
+                    </p>
+                    <% }) %>
+            </div>
+            <% } %>
 
             <% if (errors) { %>
                 <ul class="notice">

@@ -16,12 +16,15 @@
             <%= title %>
         </h1>
 
-        <% const flashMessages=messages(); %>
-            <% if (flashMessages) { %>
-                <div class="notice">
-                    <%- flashMessages %>
-                </div>
-                <% } %>
+    <% if (messages && messages.length> 0) { %>
+        <div class="notice">
+            <% messages.forEach(function(msg) { %>
+                <p>
+                    <%= msg %>
+                </p>
+                <% }) %>
+        </div>
+        <% } %>
 
                     <% if (errors && errors.array().length> 0) { %>
                         <ul class="notice">

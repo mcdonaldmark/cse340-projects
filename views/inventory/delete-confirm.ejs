@@ -1,0 +1,49 @@
+<main class="inv-page">
+    <h1 class="inv-heading">Delete Vehicle</h1>
+
+    <% if (messages && messages.length> 0) { %>
+        <div class="inv-flash">
+            <%= messages %>
+        </div>
+        <% } %>
+
+            <% if (errors && errors.length> 0) { %>
+                <div class="inv-errors">
+                    <% errors.forEach(err=> { %>
+                        <p>
+                            <%= err.msg %>
+                        </p>
+                        <% }) %>
+                </div>
+                <% } %>
+
+                    <!-- IMPORTANT: action now points to POST /inv/delete -->
+                    <form class="inv-form" action="/inv/delete" method="post">
+
+                        <p><em>Confirm Deletion – This action is permanent.</em></p>
+
+                        <!-- KEEP ONLY: Make, Model, Year, Price -->
+
+                        <label class="inv-label" for="inv_make">Make:</label>
+                        <input class="inv-input" type="text" name="inv_make" id="inv_make"
+                            value="<%= vehicle?.inv_make || '' %>" readonly>
+
+                        <label class="inv-label" for="inv_model">Model:</label>
+                        <input class="inv-input" type="text" name="inv_model" id="inv_model"
+                            value="<%= vehicle?.inv_model || '' %>" readonly>
+
+                        <label class="inv-label" for="inv_year">Year:</label>
+                        <input class="inv-input" type="text" name="inv_year" id="inv_year"
+                            value="<%= vehicle?.inv_year || '' %>" readonly>
+
+                        <label class="inv-label" for="inv_price">Price:</label>
+                        <input class="inv-input" type="text" name="inv_price" id="inv_price"
+                            value="<%= vehicle?.inv_price || '' %>" readonly>
+
+                        <!-- REQUIRED: Hidden inv_id -->
+                        <input type="hidden" name="inv_id" value="<%= vehicle?.inv_id %>">
+
+                        <!-- DELETE BUTTON -->
+                        <button type="submit" class="inv-btn">Delete Vehicle</button>
+                    </form>
+</main>

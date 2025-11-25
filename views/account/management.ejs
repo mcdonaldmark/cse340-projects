@@ -9,29 +9,47 @@
 
     <main>
         <h1>Account Management</h1>
-        <h2>You're logged in</h2>
 
-        <!-- Flash Messages -->
-        <% if (messages && messages.length> 0) { %>
-            <div class="notice">
-                <% messages.forEach(function(msg) { %>
-                    <p>
-                        <%= msg %>
-                    </p>
-                    <% }) %>
-            </div>
-            <% } %>
+        <% if (accountData) { %>
+            <h2>Welcome <%= accountData.account_firstname %>
+            </h2>
 
-                <!-- Validation Errors -->
-                <% if (errors && errors.array().length> 0) { %>
-                    <ul class="notice">
-                        <% errors.array().forEach(error=> { %>
-                            <li>
-                                <%= error.msg %>
-                            </li>
-                            <% }) %>
-                    </ul>
-                    <% } %>
+            <!-- Update Account Link for all users -->
+            <p>
+                <a href="/account/update/<%= accountData.account_id %>">Update Account Information</a>
+            </p>
+
+            <% if (accountData.account_type==='Employee' || accountData.account_type==='Admin' ) { %>
+                <h3>Inventory Management</h3>
+                <p>
+                    <a href="/inv/">Go to Inventory Management</a>
+                </p>
+                <% } %>
+                    <% } else { %>
+                        <h2>You're logged in</h2>
+                        <% } %>
+
+                            <!-- Flash Messages -->
+                            <% if (messages && messages.length> 0) { %>
+                                <div class="notice">
+                                    <% messages.forEach(function(msg) { %>
+                                        <p>
+                                            <%= msg %>
+                                        </p>
+                                        <% }) %>
+                                </div>
+                                <% } %>
+
+                                    <!-- Validation Errors -->
+                                    <% if (errors && errors.array && errors.array().length> 0) { %>
+                                        <ul class="notice">
+                                            <% errors.array().forEach(error=> { %>
+                                                <li>
+                                                    <%= error.msg %>
+                                                </li>
+                                                <% }) %>
+                                        </ul>
+                                        <% } %>
 
     </main>
 

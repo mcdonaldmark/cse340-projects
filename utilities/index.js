@@ -135,7 +135,9 @@ Util.checkJWTToken = (req, res, next) => {
                 if (err) {
                     req.flash("notice", "Please log in")
                     res.clearCookie("jwt")
-                    return res.redirect("/account/login")
+                    res.locals.accountData = null
+                    res.locals.loggedin = 0
+                    return next()
                 }
                 res.locals.accountData = accountData
                 res.locals.loggedin = 1
@@ -143,6 +145,8 @@ Util.checkJWTToken = (req, res, next) => {
             }
         )
     } else {
+        res.locals.accountData = null
+        res.locals.loggedin = 0
         next()
     }
 }
@@ -151,24 +155,27 @@ Util.checkJWTToken = (req, res, next) => {
 * Middleware to check if user is logged in (forced login)
 **************************************** */
 Util.checkLogin = (req, res, next) => {
-    if (req.cookies.jwt) {
-        jwt.verify(
-            req.cookies.jwt,
-            process.env.ACCESS_TOKEN_SECRET,
-            function (err, accountData) {
-                if (err) {
-                    req.flash("notice", "Please log in")
-                    res.clearCookie("jwt")
-                    return res.redirect("/account/login")
-                }
-                res.locals.accountData = accountData
-                res.locals.loggedin = 1
-                next()
-            }
-        )
+    if (res.locals.loggedin) {
+        next()
     } else {
-        res.redirect("/account/login")
+        req.flash("notice", "Please log in.")
+        return res.redirect("/account/login")
     }
 }
+
+/* ****************************************
+* Middleware to check if user is Employee or Admin
+**************************************** */
+Util.checkAdmin = (req, res, next) => {
+    if (res.locals.accountData) {
+        const type = res.locals.accountData.account_type; // Make sure your account table has account_type field
+        if (type === "Admin" || type === "Employee") {
+            return next();
+        }
+    }
+    // If not authorized, redirect to login with message
+    req.flash("notice", "You must be an employee or admin to access that page.");
+    return res.redirect("/account/login");
+};
 
 module.exports = Util

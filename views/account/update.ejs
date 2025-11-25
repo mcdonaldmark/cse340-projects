@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>
+            <%= title %>
+        </title>
+</head>
+
+<body>
+
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+
+        <!-- Flash Messages -->
+        <% if (messages && messages.length> 0) { %>
+            <div class="notice">
+                <% messages.forEach(msg=> { %>
+                    <p>
+                        <%= msg %>
+                    </p>
+                    <% }) %>
+            </div>
+            <% } %>
+
+                <!-- Validation Errors -->
+                <% if (errors && errors.array && errors.array().length> 0) { %>
+                    <ul class="notice">
+                        <% errors.array().forEach(error=> { %>
+                            <li>
+                                <%= error.msg %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <% } %>
+
+                        <!-- Account Update Form -->
+                        <section>
+                            <h2>Account Update</h2>
+                            <form action="/account/update/<%= account.account_id %>" method="POST">
+                                <input type="hidden" name="account_id" value="<%= account.account_id %>">
+
+                                <label for="account_firstname">First Name:</label>
+                                <input type="text" id="account_firstname" name="account_firstname"
+                                    value="<%= account.account_firstname %>" required>
+
+                                <label for="account_lastname">Last Name:</label>
+                                <input type="text" id="account_lastname" name="account_lastname"
+                                    value="<%= account.account_lastname %>" required>
+
+                                <label for="account_email">Email:</label>
+                                <input type="email" id="account_email" name="account_email"
+                                    value="<%= account.account_email %>" required>
+
+                                <label for="account_password">New Password:</label>
+                                <input type="password" id="account_password" name="account_password">
+
+                                <label for="account_password_confirm">Confirm Password:</label>
+                                <input type="password" id="account_password_confirm" name="account_password_confirm">
+
+                                <button type="submit">Update Account</button>
+                            </form>
+                        </section>
+
+    </main>
+
+</body>
+
+</html>

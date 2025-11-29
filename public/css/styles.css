@@ -559,9 +559,6 @@ footer {
   }
 }
 
-/* -----------------------------
-   Reviews Section
------------------------------ */
 .reviews-section {
   display: flex;
   flex-direction: column;
@@ -601,14 +598,10 @@ footer {
 
 .review-text {
   flex: 1;
-  /* Take the remaining space */
   font-size: 1rem;
   line-height: 1.5;
 }
 
-/* -----------------------------
-   Add Review Form
------------------------------ */
 .reviews-section form {
   display: flex;
   flex-direction: column;

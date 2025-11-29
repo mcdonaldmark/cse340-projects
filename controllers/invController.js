@@ -1,6 +1,7 @@
 const invModel = require("../models/inventory-model")
 const { validationResult } = require("express-validator")
 const utilities = require("../utilities/")
+const reviewModel = require("../models/review-model") // added for reviews
 
 const invCont = {}
 
@@ -23,7 +24,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
 }
 
 /* ***************************
- *  Build inventory detail view
+ *  Build inventory detail view with reviews
  * ************************** */
 invCont.buildByInvId = async function (req, res, next) {
   const inv_id = req.params.inv_id
@@ -31,11 +32,16 @@ invCont.buildByInvId = async function (req, res, next) {
   const detail = await utilities.buildVehicleDetail(data)
   let nav = await utilities.getNav()
 
+  // Get reviews for this vehicle
+  const reviews = await reviewModel.getReviewsByVehicle(inv_id)
+
   res.render("./inventory/detail", {
     title: `${data.inv_make} ${data.inv_model} Details`,
     nav,
     detail,
-    vehicle: data
+    vehicle: data,
+    reviews, // pass reviews to view
+    messages: req.flash("notice")
   })
 }
 
@@ -72,13 +78,10 @@ invCont.buildAddClassification = async function (req, res) {
 invCont.addClassification = async function (req, res) {
   const { classification_name } = req.body;
 
-  // Insert new classification
   const result = await invModel.addClassification(classification_name);
 
   if (result) {
     req.flash("notice", `Successfully added ${classification_name} classification.`);
-
-    // 🔥 Rebuild nav AFTER the insert (important!)
     let nav = await utilities.getNav();
     const classificationList = await utilities.buildClassificationList();
 
@@ -265,7 +268,7 @@ invCont.updateInventory = async function (req, res, next) {
     res.status(501).render("inventory/edit-inventory", {
       title: "Edit " + itemName,
       nav,
-      classificationList,      // ← use classificationList
+      classificationList,
       errors: null,
       vehicle: {
         inv_id,
@@ -318,6 +321,22 @@ invCont.deleteInventory = async function (req, res, next) {
   } else {
     req.flash("notice", "The delete failed. Please try again.")
     return res.redirect(`/inv/delete/${inv_id}`)
+  }
+}
+
+/* ****************************************
+ *  Add Review
+ * **************************************** */
+invCont.addReview = async function (req, res, next) {
+  const { inv_id, rating, review_text } = req.body
+  const account_id = res.locals.accountData.account_id
+
+  try {
+    await reviewModel.addReview({ inv_id, account_id, rating, review_text })
+    req.flash("notice", "Review submitted successfully!")
+    res.redirect(`/inv/detail/${inv_id}`)
+  } catch (error) {
+    next(error)
   }
 }
 

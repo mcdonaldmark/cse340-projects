@@ -7,7 +7,7 @@
         <%- detail %>
 
             <div class="inv-raw">
-                <h3>Vehicle data</h3>
+                <h3>Vehicle Data</h3>
                 <ul>
                     <li><strong>Stock ID:</strong>
                         <%= vehicle.inv_id %>
@@ -25,3 +25,52 @@
                     </li>
                 </ul>
             </div>
+
+            <hr>
+
+<h2>Reviews</h2>
+
+<div class="reviews-section">
+    <% if (reviews.length> 0) { %>
+        <% reviews.forEach(r=> { %>
+            <div class="review-item">
+                <div class="review-header">
+                    <span class="review-author">
+                        <%= r.account_firstname %>
+                            <%= r.account_lastname %>
+                    </span>
+                    <span class="review-date">
+                        (<%= new Date(r.review_date).toLocaleDateString() %>)
+                    </span>
+                </div>
+                <div class="review-body">
+                    <span class="review-rating">
+                        Rating: <%= r.rating || 'N/A' %>/5
+                    </span>
+                    <span class="review-text">
+                        <%= r.review_text %>
+                    </span>
+                </div>
+            </div>
+            <% }) %>
+                <% } else { %>
+                    <p>No reviews yet. Be the first to review this vehicle!</p>
+                    <% } %>
+
+                        <% if (loggedin) { %>
+                            <h3>Add Your Review</h3>
+                            <form action="/reviews/add" method="POST">
+                                <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
+
+                                <label for="rating">Rating (1-5):</label>
+                                <input type="number" id="rating" name="rating" min="1" max="5">
+
+                                <label for="review_text">Review:</label>
+                                <textarea id="review_text" name="review_text" required></textarea>
+
+                                <button type="submit">Submit Review</button>
+                            </form>
+                            <% } else { %>
+                                <p><a href="/account/login">Log in</a> to submit a review.</p>
+                                <% } %>
+</div>
